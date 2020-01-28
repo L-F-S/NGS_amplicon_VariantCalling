@@ -61,9 +61,8 @@ echo -e '#     '${FASTQC_INIT}'\n'
 # and produces fastQC reports of the newly polished data.
 echo -e '# Running *trim_galore* on the original data...\n'
 mkdir ${PREPROCESSING} && mkdir ${FASTQC_TG} && mkdir ${TG_REPORTS}
-TODO --fastqc does not work because trim_galore does not recognize path somehow
- adding a new line of fastqc
-$trim_galore -q 30 --fastqc ${DATASET}/*.fastq.gz -o ${PREPROCESSING}  --path_to_cutadapt /home/lorenzo.signorini/.local/bin/cutadapt
+#$trim_galore -q 30 --fastqc ${DATASET}/*.fastq.gz -o ${PREPROCESSING}  --path_to_cutadapt /home/lorenzo.signorini/.local/bin/cutadapt
+$trim_galore -q 30 -o ${PREPROCESSING}  --path_to_cutadapt /home/lorenzo.signorini/.local/bin/cutadapt
 mv ${PREPROCESSING}/*.txt ${TG_REPORTS}
 $fastqc ${PREPROCESSING}/*.fq.gz -o ${FASTQC_TG} 
 echo '# Data successfully preprocessed by *trim_galore*. Check in:'
